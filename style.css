@@ -119,3 +119,31 @@ main {
   display: block;
   text-align: center;
 }
+
+table {
+  text-align: center;
+  background-color: white;
+}
+
+thead {
+  background-color: #0d6efd;
+}
+
+tbody {
+  background-color: #002c6d;
+}
+
+td,
+th {
+  padding: 5px 10px;
+}
+
+table button {
+  font-size: 1rem;
+  padding: 10px 20px;
+  color: white;
+}
+
+.modif {
+  background-color: #0d6efd;
+}

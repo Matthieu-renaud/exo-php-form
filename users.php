@@ -22,33 +22,42 @@
 
   <table>
     <thead>
-        <tr>
-            <!-- <th>Prénom</th>
-            <th>Nom</th>
-            <th>Pseudo</th>
-            <th>Email</th>
-            <th>ID</th> -->
-        </tr>
+      <tr>
+        <th>Prénom</th>
+        <th>Nom</th>
+        <th>Pseudo</th>
+        <th>Email</th>
+        <th>ID</th>
+        <th class="modif">Modification</th>
+      </tr>
     </thead>
     <tbody>
-      <!-- <tr>
-          <td>The table body</td>
-          <td>with two columns</td>
-          <td>with two columns</td>
-          <td>with two columns</td>
-          <td>with two columns</td>
-      </tr> -->
-      
+
       <?php
+
       $req = new PDO('mysql:host=localhost;dbname=my_blog', 'root', '');
       
-      $stmt = $req->prepare("SELECT firstname AS prénom, lastname AS nom, pseudo, email, id FROM users");
+      $stmt = $req->prepare("SELECT firstname, lastname, pseudo, email, id FROM users");
       $stmt->execute();
       
-      $resultat = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-      echo $resultat;
+      $resultat = $stmt->fetchAll();
+
+      for ($i=0; $i < count($resultat); $i++) { 
+        echo "<tr>";
+        for ($j=0; $j < count($resultat[$i])/2; $j++) { 
+          echo "<td>{$resultat[$i][$j]}</td>";
+        }
+        print_r("<td class=\"modif\"><button id=\"submit{.$i}\"><a href=\"#\">Modifier</a></button></td>");
+        echo "</tr>";
+      }
+ 
+      // print_r($resultat);
+      // print_r($resultat[0]['pseudo']);
+      // var_dump($resultat);
+      // print_r(count($resultat[0])/2);
       
       ?>
+
     </tbody>
   </table>
 
