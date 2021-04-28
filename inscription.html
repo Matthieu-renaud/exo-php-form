@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscription</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <ul>
+        <li class="menus"><a href="./index.html">Accueil</a></li>
+        <li class="menus"><a href="./users.php">Utilisateurs</a></li>
+        <li class="menus"><a href="./inscription.html">Inscription</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <form action="./inscription.php" method="post">
+    <h1>Ce n'est pas un formulaire, c'est une inscription,<br> je valide et je patiente</h1>
+    <div class="form-container">
+      <label for="prenom">Prénom</label>
+      <input class="input" type="text" name="prenom" id="prenom">
+    </div>
+    <div class="form-container">
+      <label for="nom">Nom</label>
+      <input class="input" type="text" name="nom" id="nom">
+    </div>
+    <div class="form-container">
+      <label for="pseudo">Pseudo</label>
+      <input class="input" type="text" name="pseudo" id="pseudo">
+    </div>
+    <div class="form-container">
+      <label for="email">Email</label>
+      <input class="input" type="email" name="email" id="email">
+    </div>
+    <div class="form-container">
+      <label for="mdp">Mot de passe</label>
+      <input class="input" type="password" name="mdp" id="mdp">
+    </div>
+    <div class="form-container">
+      <label for="confmdp">Confirmez votre mot de passe</label>
+      <input class="input" type="password" name="confmdp" id="confmdp">
+    </div>
+    <input type="submit" value="Validation avec Confirmation">
+  </form>
+
+
+  <script src="./script.js"></script>
+</body>
+
+</html>

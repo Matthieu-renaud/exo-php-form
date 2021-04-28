@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  outline-width: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh
+}
+
+ul {
+  list-style: none;
+}
+
+.menus {
+  display: inline;
+  /* width: 200px; */
+  font-size: 1.5rem;
+  padding: 15px 30px;
+}
+
+.menus:hover {
+  background-color:#002c6d ;
+}
+
+nav {
+  padding: 15px 0px;
+  width: 100%;
+  display: flex;
+  justify-content:flex-end;
+  align-items: center;
+  background-color: #0d6efd;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+form {
+  border: 1px solid white;
+  padding: 10px 20px;
+  text-align: center;
+  width: 600px;
+  font-size: 1.5rem;
+}
+
+form>* {
+  margin: 10px;
+  padding: 5px 10px;
+}
+
+.input {
+  padding: 15px 10px 5px;
+  width: 100%;
+  background-color: white;
+  border: none;
+  font-size: 1.2rem;
+}
+
+.form-container {
+  position: relative;
+  text-align: right;
+}
+
+label {
+  color: black;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  cursor: text;
+}
+
+input[type="submit"]{
+  cursor: pointer;
+  font-size: 2rem;
+  padding: 10px 20px;
+  width: unset;
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+}
+
+.alert-container {
+  font-size: 1.5rem;
+  display: block;
+}
+
+.error {
+  background-color: #dc3545;
+  padding: 20px 40px;
+}
+
+.success {
+  background-color: #198754;
+  padding: 20px 40px;
+}
+
+button {
+  background-color: #0d6efd;
+  border: none;
+  padding: 20px 40px;
+  font-size: 1.8rem;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+main {
+  display: block;
+  text-align: center;
+}
