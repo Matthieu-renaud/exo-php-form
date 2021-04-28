@@ -109,6 +109,18 @@ input[type="submit"]{
   padding: 20px 40px;
 }
 
+.alert-container form {
+  border: none;
+  padding: 0;
+  text-align: center;
+  width: 600px;
+  font-size: 1.5rem;
+}
+
+.alert-container form>* {
+  background-color: #dc3545;
+}
+
 button {
   background-color: #0d6efd;
   color: white;
@@ -153,4 +165,9 @@ table button {
 
 .modif {
   background-color: #0d6efd;
+}
+
+.suppr button,
+.suppr {
+  background-color: #dc3545;
 }

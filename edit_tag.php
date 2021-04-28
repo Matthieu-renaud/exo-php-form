@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Liste Tag</title>
+  <title>Édition Tag</title>
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
-  <header>
+<header>
     <nav>
       <ul class="group_menus">
         <li class="menus"><a href="./index.html">Accueil</a></li>
@@ -33,41 +33,30 @@
     </nav>
   </header>
 
+  <?php
+  
+  $id = htmlspecialchars($_GET['id']);
 
-  <table>
-    <thead>
-      <tr>
-        <th>Nom</th>
-        <th>ID</th>
-        <th class="modif">Modification</th>
-        <th class="suppr">Suppression</th>
-      </tr>
-    </thead>
-    <tbody>
+  $req = new PDO('mysql:host=localhost;dbname=my_blog', 'root', '');
+        
+  $stmt = $req->prepare("SELECT name FROM tag WHERE id=:id");
+  $stmt->execute(array(
+    'id' => $id
+  ));
 
-      <?php
+  $resultat = $stmt->fetchAll();
 
-      $req = new PDO('mysql:host=localhost;dbname=my_blog', 'root', '');
-      
-      $stmt = $req->prepare("SELECT name, id FROM tag ORDER BY id");
-      $stmt->execute();
-      
-      $resultat = $stmt->fetchAll();
+  ?>
 
-      for ($i=0; $i < count($resultat); $i++) { 
-        echo "<tr>";
-        for ($j=0; $j < count($resultat[$i])/2; $j++) { 
-          echo "<td>{$resultat[$i][$j]}</td>";
-        }
-        print_r("<td class=\"modif\"><button id=\"modif{.$i}\"><a href=\"./edit_tag.php?id={$resultat[$i][1]}\">Modifier</a></button></td>");
-        print_r("<td class=\"suppr\"><button id=\"suppr{.$i}\"><a href=\"./del_tag.php?id={$resultat[$i][1]}\">Supprimer</a></button></td>");
-        echo "</tr>";
-      }
-      
-      ?>
-
-    </tbody>
-  </table>
-
+  <form action="./validation_edit_tag.php" method="post">
+    <h1>Ce n'est pas un formulaire, c'est une modification,<br> je valide et je me sauve</h1>
+    <div class="form-container">
+      <label for="nom">Nom</label>
+      <input class="input" type="text" name="nom" id="nom" value="<?php echo $resultat[0]['name'] ?>">
+    </div>
+    <input type="hidden" name="id" id="id" value="<?php echo $id ?>">
+    <input type="submit" value="Validation avec Modification">
+  </form>
+  
 </body>
 </html>

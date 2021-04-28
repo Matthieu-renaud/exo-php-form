@@ -9,7 +9,7 @@
 </head>
 <body>
   
-<header>
+  <header>
     <nav>
       <ul class="group_menus">
         <li class="menus"><a href="./index.html">Accueil</a></li>
@@ -61,7 +61,7 @@
         for ($j=0; $j < count($resultat[$i])/2; $j++) { 
           echo "<td>{$resultat[$i][$j]}</td>";
         }
-        print_r("<td class=\"modif\"><button id=\"submit{.$i}\"><a href=\"./edit.php?id={$resultat[$i][4]}\">Modifier</a></button></td>");
+        print_r("<td class=\"modif\"><button id=\"modif{.$i}\"><a href=\"./edit.php?id={$resultat[$i][4]}\">Modifier</a></button></td>");
         echo "</tr>";
       }
       
