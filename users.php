@@ -47,14 +47,9 @@
         for ($j=0; $j < count($resultat[$i])/2; $j++) { 
           echo "<td>{$resultat[$i][$j]}</td>";
         }
-        print_r("<td class=\"modif\"><button id=\"submit{.$i}\"><a href=\"#\">Modifier</a></button></td>");
+        print_r("<td class=\"modif\"><button id=\"submit{.$i}\"><a href=\"./edit.php?id={$resultat[$i][4]}\">Modifier</a></button></td>");
         echo "</tr>";
       }
- 
-      // print_r($resultat);
-      // print_r($resultat[0]['pseudo']);
-      // var_dump($resultat);
-      // print_r(count($resultat[0])/2);
       
       ?>
 
