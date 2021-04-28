@@ -9,10 +9,24 @@
 </head>
 <body>
   
-  <header>
+<header>
     <nav>
-      <ul>
+      <ul class="group_menus">
         <li class="menus"><a href="./index.html">Accueil</a></li>
+      </ul>
+      <ul class="group_menus">
+        <li class="menus"><a href="./aff_article.php">Articles</a></li>
+        <li class="menus"><a href="./ajout_article.php">Ajout</a></li>
+      </ul>
+      <ul class="group_menus">
+        <li class="menus"><a href="./aff_category.php">Catégories</a></li>
+        <li class="menus"><a href="./ajout_category.php">Ajout</a></li>
+      </ul>
+      <ul class="group_menus">
+        <li class="menus"><a href="./aff_tag.php">Tags</a></li>
+        <li class="menus"><a href="./ajout_tag.php">Ajout</a></li>
+      </ul>
+      <ul class="group_menus">
         <li class="menus"><a href="./users.php">Utilisateurs</a></li>
         <li class="menus"><a href="./inscription.html">Inscription</a></li>
       </ul>
@@ -37,7 +51,7 @@
 
       $req = new PDO('mysql:host=localhost;dbname=my_blog', 'root', '');
       
-      $stmt = $req->prepare("SELECT firstname, lastname, pseudo, email, id FROM users");
+      $stmt = $req->prepare("SELECT firstname, lastname, pseudo, email, id FROM users ORDER BY id");
       $stmt->execute();
       
       $resultat = $stmt->fetchAll();
