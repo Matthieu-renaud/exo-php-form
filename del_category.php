@@ -36,7 +36,7 @@
   <main>
     <div class="alert-container">
       
-      <div class="info">Vous avez séléctionné cette ligne :</div>
+      <div class="info">Vous avez sélectionné cette ligne :</div>
       
       <br>
 

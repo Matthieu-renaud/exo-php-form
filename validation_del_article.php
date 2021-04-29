@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Utilisateurs</title>
+  <title>Validation Retrait Tag</title>
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
   
-  <header>
+<header>
     <nav>
       <ul class="group_menus">
         <li class="menus"><a href="./index.html">Accueil</a></li>
@@ -33,42 +33,27 @@
     </nav>
   </header>
 
-
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Prénom</th>
-        <th>Nom</th>
-        <th>Pseudo</th>
-        <th>Email</th>
-        <th class="modif">Modification</th>
-      </tr>
-    </thead>
-    <tbody>
-
+  <main>
+    <div class="alert-container">
+      
       <?php
 
-      $req = new PDO('mysql:host=localhost;dbname=my_blog', 'root', '');
-      
-      $stmt = $req->prepare("SELECT id, firstname, lastname, pseudo, email FROM users ORDER BY id");
-      $stmt->execute();
-      
-      $resultat = $stmt->fetchAll();
+      $id = htmlspecialchars($_POST['id']);
 
-      for ($i=0; $i < count($resultat); $i++) { 
-        echo "<tr>";
-        for ($j=0; $j < count($resultat[$i])/2; $j++) { 
-          echo "<td>{$resultat[$i][$j]}</td>";
-        }
-        print_r("<td class=\"modif\"><button id=\"modif{.$i}\"><a href=\"./edit.php?id={$resultat[$i][0]}\">Modifier</a></button></td>");
-        echo "</tr>";
-      }
+      echo "<h2 class=\"success\">Suppression réussie</h2>";
       
+      $req = new PDO('mysql:host=localhost;dbname=my_blog', 'root', '');
+      $sth = $req->prepare('DELETE FROM tag WHERE id=:id');
+
+      $sth->execute(array(
+        'id' => $id
+      ));
+
       ?>
 
-    </tbody>
-  </table>
+    </div>
+  <button><a href="./aff_tag.php">Retour à la liste</a></button>
+  </main>
 
 </body>
 </html>

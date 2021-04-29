@@ -37,8 +37,8 @@
   <table>
     <thead>
       <tr>
-        <th>Nom</th>
         <th>ID</th>
+        <th>Nom</th>
         <th class="modif">Modification</th>
         <th class="suppr">Suppression</th>
       </tr>
@@ -49,7 +49,7 @@
 
       $req = new PDO('mysql:host=localhost;dbname=my_blog', 'root', '');
       
-      $stmt = $req->prepare("SELECT name, id FROM tag ORDER BY id");
+      $stmt = $req->prepare("SELECT id, name FROM tag ORDER BY id");
       $stmt->execute();
       
       $resultat = $stmt->fetchAll();
@@ -59,8 +59,8 @@
         for ($j=0; $j < count($resultat[$i])/2; $j++) { 
           echo "<td>{$resultat[$i][$j]}</td>";
         }
-        print_r("<td class=\"modif\"><button id=\"modif{.$i}\"><a href=\"./edit_tag.php?id={$resultat[$i][1]}\">Modifier</a></button></td>");
-        print_r("<td class=\"suppr\"><button id=\"suppr{.$i}\"><a href=\"./del_tag.php?id={$resultat[$i][1]}\">Supprimer</a></button></td>");
+        print_r("<td class=\"modif\"><button id=\"modif{.$i}\"><a href=\"./edit_tag.php?id={$resultat[$i][0]}\">Modifier</a></button></td>");
+        print_r("<td class=\"suppr\"><button id=\"suppr{.$i}\"><a href=\"./del_tag.php?id={$resultat[$i][0]}\">Supprimer</a></button></td>");
         echo "</tr>";
       }
       

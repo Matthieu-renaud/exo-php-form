@@ -56,12 +56,17 @@ form>* {
   padding: 5px 10px;
 }
 
+select,
 .input {
   padding: 15px 10px 5px;
   width: 100%;
   background-color: white;
   border: none;
   font-size: 1.2rem;
+}
+
+select {
+  width: 580px;
 }
 
 .form-container {
@@ -155,6 +160,7 @@ tbody {
 td,
 th {
   padding: 5px 10px;
+  max-width: 500px;
 }
 
 table button {
@@ -170,4 +176,8 @@ table button {
 .suppr button,
 .suppr {
   background-color: #dc3545;
+}
+
+#table_article>tbody>tr>td:nth-of-type(2) {
+  text-align: left;
 }

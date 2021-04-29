@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Validation Édition Tag</title>
+  <title>Validation Ajout Article</title>
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
@@ -36,8 +36,6 @@
 <main>
   <div class="alert-container">
     <?php
-
-    $id = htmlspecialchars($_POST['id']);
 
     $nom = htmlspecialchars($_POST['nom']);
     $nomLen = strlen($nom);
@@ -71,20 +69,19 @@
     if($nomBool && $contenuBool && $categoryBool) {
       
       $req = new PDO('mysql:host=localhost;dbname=my_blog', 'root', '');
-      $sth = $req->prepare('UPDATE article SET name = :name, contenu_article = :contenu, category_id = :category WHERE id=:id');
+      $sth = $req->prepare('INSERT INTO article (name, contenu_article, category_id) VALUES(:name, :contenu, :category)');
       
       $sth->execute(array(
         'name' => strip_tags($nom),
         'contenu' => strip_tags($contenu),
-        'category' => strip_tags($category),
-        'id' => $id
+        'category' => strip_tags($category)
       ));
       
     }
 
     ?>
   </div>
-  <button><a href="./aff_article.php">Retour à la liste</a></button>
+  <button><a href="./ajout_article.php">Retour au formulaire</a></button>
 </main>
 
   
