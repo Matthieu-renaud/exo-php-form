@@ -117,6 +117,7 @@ input[type="submit"]{
 .alert-container form {
   border: none;
   padding: 0;
+  margin: auto;
   text-align: center;
   width: 600px;
   font-size: 1.5rem;
@@ -178,6 +179,6 @@ table button {
   background-color: #dc3545;
 }
 
-#table_article>tbody>tr>td:nth-of-type(2) {
+#table_article>tbody>tr>td:nth-of-type(3) {
   text-align: left;
 }

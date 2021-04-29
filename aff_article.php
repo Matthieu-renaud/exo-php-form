@@ -40,8 +40,8 @@
         <th>ID</th>
         <th>Nom</th>
         <th>Contenu</th>
-        <th>Categorie</th>
-        <th>ID Categorie</th>
+        <th>Catégorie</th>
+        <th>ID Catégorie</th>
         <th class="modif">Modification</th>
         <th class="suppr">Suppression</th>
       </tr>

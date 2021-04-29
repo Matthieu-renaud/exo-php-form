@@ -56,7 +56,10 @@
         $resultat = $stmt->fetchAll();
 
         for ($i=0; $i < count($resultat); $i++) { 
-          echo "<option value=\"{$resultat[$i][1]}\">{$resultat[$i][0]}</option>";
+          echo "<option "; 
+          if ($resultat[$i]['name'] == "Autre")
+          echo "selected ";
+          echo "value=\"{$resultat[$i][1]}\">{$resultat[$i][0]}</option>";
         }
         
         ?>
