@@ -55,8 +55,8 @@
       <input class="input" type="text" name="nom" id="nom" value="<?php echo $res[0]['name'] ?>">
     </div>
     <div class="form-container">
-      <label for="contenu">Contenu</label>
-      <input class="input" type="text" name="contenu" id="contenu" value="<?php echo $res[0]['contenu_article'] ?>">
+      <label id="textarea_label" for="contenu">Contenu</label>
+      <textarea name="contenu" id="contenu"><?php echo $res[0]['contenu_article'] ?></textarea>
     </div>
     <div class="form-container">
       <label for="category">Catégorie</label>

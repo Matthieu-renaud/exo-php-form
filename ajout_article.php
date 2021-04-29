@@ -40,9 +40,9 @@
       <input class="input" type="text" name="nom" id="nom">
     </div>
     <div class="form-container">
-      <label for="contenu">Contenu</label>
-      <input class="input" type="text" name="contenu" id="contenu">
-    </div>
+        <label id="textarea_label" for="contenu">Contenu</label>
+        <textarea name="contenu" id="contenu" ></textarea>
+      </div>
     <div class="form-container">
       <label for="category">Catégorie</label>
       <select id="category" name="category">
@@ -64,7 +64,7 @@
         
         ?>
         </select>
-    </div>
+      </div>
     <input type="submit" value="Validation avec Création d'Article">
   </form>
 

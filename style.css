@@ -56,6 +56,7 @@ form>* {
   padding: 5px 10px;
 }
 
+textarea,
 select,
 .input {
   padding: 15px 10px 5px;
@@ -63,6 +64,15 @@ select,
   background-color: white;
   border: none;
   font-size: 1.2rem;
+}
+
+textarea {
+  font-family: 'Roboto', sans-serif;
+  resize: none;
+  height: 110px;
+  width: 470px;
+  padding-right: 100px;
+  padding-top: 40px;
 }
 
 select {
@@ -81,6 +91,10 @@ label {
   transform: translateY(-50%);
   right: 10px;
   cursor: text;
+}
+
+#textarea_label {
+  top: 30px;
 }
 
 input[type="submit"]{
