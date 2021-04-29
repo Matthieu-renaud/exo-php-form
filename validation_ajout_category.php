@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Liste Catégorie</title>
+  <title>Validation Ajout Tag</title>
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
-  <header>
+<header>
     <nav>
       <ul class="group_menus">
         <li class="menus"><a href="./index.html">Accueil</a></li>
@@ -32,42 +32,37 @@
       </ul>
     </nav>
   </header>
+  
+<main>
+  <div class="alert-container">
+    <?php
 
+    $nom = htmlspecialchars($_POST['nom']);
+    $nomLen = strlen($nom);
+    $nomBool= false;
+    if (strlen($nom)<=3) {
+      echo "<h3 class=\"error\">Le nom est trop court : $nomLen caractères(s)</h3>";
+    } else {
+      $nomBool = true;
+      echo "<h3 class=\"success\">Le nom est valide</h3>";
+    }
 
-  <table>
-    <thead>
-      <tr>
-        <th>Nom</th>
-        <th>ID</th>
-        <th class="modif">Modification</th>
-        <th class="suppr">Suppression</th>
-      </tr>
-    </thead>
-    <tbody>
-
-      <?php
-
+    if($nomBool) {
+      
       $req = new PDO('mysql:host=localhost;dbname=my_blog', 'root', '');
+      $sth = $req->prepare('INSERT INTO category (name) VALUES(:name)');
       
-      $stmt = $req->prepare("SELECT name, id FROM category ORDER BY id");
-      $stmt->execute();
+      $sth->execute(array(
+        'name' => strip_tags($nom)
+      ));
       
-      $resultat = $stmt->fetchAll();
+    }
 
-      for ($i=0; $i < count($resultat); $i++) { 
-        echo "<tr>";
-        for ($j=0; $j < count($resultat[$i])/2; $j++) { 
-          echo "<td>{$resultat[$i][$j]}</td>";
-        }
-        print_r("<td class=\"modif\"><button id=\"modif{.$i}\"><a href=\"./edit_category.php?id={$resultat[$i][1]}\">Modifier</a></button></td>");
-        print_r("<td class=\"suppr\"><button id=\"suppr{.$i}\"><a href=\"./del_category.php?id={$resultat[$i][1]}\">Supprimer</a></button></td>");
-        echo "</tr>";
-      }
-      
-      ?>
+    ?>
+  </div>
+  <button><a href="./ajout_category.php">Retour au formulaire</a></button>
+</main>
 
-    </tbody>
-  </table>
-
+  
 </body>
 </html>
