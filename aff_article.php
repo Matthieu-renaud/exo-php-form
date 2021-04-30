@@ -41,7 +41,7 @@
         <th>Nom</th>
         <th>Contenu</th>
         <th>Catégorie</th>
-        <th>ID Catégorie</th>
+        <th>Tag</th>
         <th class="modif">Modification</th>
         <th class="suppr">Suppression</th>
       </tr>
@@ -52,14 +52,19 @@
 
       $req = new PDO('mysql:host=localhost;dbname=my_blog', 'root', '');
       
-      $stmt = $req->prepare("SELECT  article.id, article.name, article.contenu_article, category.name, category.id FROM article LEFT JOIN category ON article.category_id = category.id");
+      $stmt = $req->prepare("SELECT article.id, article.name, article.contenu_article, category.name AS category, GROUP_CONCAT(tag.name SEPARATOR \", \") AS tag FROM article
+      LEFT JOIN category ON article.category_id = category.id
+      LEFT JOIN article_tags ON article.id = article_tags.article_id
+      LEFT JOIN tag ON tag.id = article_tags.tag_id
+      GROUP BY article.id
+      ORDER BY article.id");
       $stmt->execute();
       
       $resultat = $stmt->fetchAll();
 
       for ($i=0; $i < count($resultat); $i++) { 
         echo "<tr>";
-        for ($j=0; $j < count($resultat[$i])/2+1; $j++) { 
+        for ($j=0; $j < count($resultat[$i])/2; $j++) { 
           echo "<td>{$resultat[$i][$j]}</td>";
         }
         print_r("<td class=\"modif\"><button id=\"modif{.$i}\"><a href=\"./edit_article.php?id={$resultat[$i][0]}\">Modifier</a></button></td>");
