@@ -78,6 +78,48 @@
       ));
       
     }
+    
+    function string2url($chaine) { 
+      $chaine = trim($chaine); 
+      $chaine = strtr($chaine, 
+      "ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ", 
+      "aaaaaaaaaaaaooooooooooooeeeeeeeecciiiiiiiiuuuuuuuuynn"); 
+      $chaine = lcfirst(ucwords($chaine));
+      $chaine = preg_replace('#([^.a-z0-9]+)#i', '', $chaine); 
+              $chaine = preg_replace('#-{2,}#','',$chaine); 
+              $chaine = preg_replace('#-$#','',$chaine); 
+              $chaine = preg_replace('#^-#','',$chaine); 
+      return $chaine; 
+      }
+
+      
+      $req = new PDO('mysql:host=localhost;dbname=my_blog', 'root', '');
+      $cmd = $req->prepare('SELECT name, id, CONCAT(name, id) FROM tag');
+      $appel = $req->prepare('SELECT count(*) FROM tag');
+      
+      $cmd->execute();
+      $appel->execute();
+      
+      $res = $cmd->fetchAll();
+      $nbr = $appel->fetchAll();
+
+
+      print_r($_POST['exemple16']);
+
+      // if(!empty($case)){
+      //   echo"Vous avez coché la case";}
+      //   else
+      //   {echo"Vous n'avez pas coché la case";
+      // }
+      
+      // for ($i=0; $i < $nbr[0][0]; $i++) { 
+      //   $idconcat = string2url($res[$i][2]);
+      //   if ($_POST[$idconcat]=='on')
+      //   echo 'cc';
+      // }
+
+      // $check = htmlspecialchars($_POST['contenu']);
+
 
     ?>
   </div>

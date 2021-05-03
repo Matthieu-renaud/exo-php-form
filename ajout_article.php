@@ -93,7 +93,7 @@
           for ($i=0; $i < count($res); $i++) {
             $nom = string2url($res[$i][0]);
             $id = string2url($res[$i][1]);
-            echo "<div class=\"checkbox_option\"><input type=\"checkbox\" name=\"{$nom}\" id=\"{$id}\">";
+            echo "<div class=\"checkbox_option\"><input type=\"checkbox\" name=\"{$id}\" id=\"{$id}\">";
             echo "<label for=\"{$id}\">{$res[$i][0]}</label></div>";
           }
           ?>
