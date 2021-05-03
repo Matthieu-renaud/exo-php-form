@@ -63,7 +63,42 @@
         }
         
         ?>
-        </select>
+      </select>
+    </div>
+      <div class="form-container checkoss">
+        <label for="nom">Tag</label>
+        <div class="checkcheck">
+          
+          <?php
+          function string2url($chaine) { 
+            $chaine = trim($chaine); 
+            $chaine = strtr($chaine, 
+            "ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ", 
+            "aaaaaaaaaaaaooooooooooooeeeeeeeecciiiiiiiiuuuuuuuuynn"); 
+            $chaine = lcfirst(ucwords($chaine));
+            $chaine = preg_replace('#([^.a-z0-9]+)#i', '', $chaine); 
+                    $chaine = preg_replace('#-{2,}#','',$chaine); 
+                    $chaine = preg_replace('#-$#','',$chaine); 
+                    $chaine = preg_replace('#^-#','',$chaine); 
+            return $chaine; 
+            }
+          
+          $req = new PDO('mysql:host=localhost;dbname=my_blog', 'root', '');
+        
+          $stmt = $req->prepare("SELECT name, CONCAT(name, id) AS real_id FROM tag ORDER BY name");
+          $stmt->execute();
+          
+          $res = $stmt->fetchAll();
+          
+          for ($i=0; $i < count($res); $i++) {
+            $nom = string2url($res[$i][0]);
+            $id = string2url($res[$i][1]);
+            echo "<div class=\"checkbox_option\"><input type=\"checkbox\" name=\"{$nom}\" id=\"{$id}\">";
+            echo "<label for=\"{$id}\">{$res[$i][0]}</label></div>";
+          }
+          ?>
+
+        </div>
       </div>
     <input type="submit" value="Validation avec Création d'Article">
   </form>

@@ -93,6 +93,43 @@ label {
   cursor: text;
 }
 
+.checkoss {
+  border: 1px solid white;
+  margin-left: 20px;
+  /* padding: 15px 10px 5px; */
+  width: 558px;
+  display: flex;
+  justify-content: center;
+  align-items: right;
+}
+
+.checkoss label {
+  transform: unset;
+  top: unset;
+  right: unset;
+}
+
+.checkoss>label {
+  right: 10px;
+}
+
+.checkcheck {
+  padding: 10px 5px;
+}
+
+.checkbox_option>* {
+  padding: 0 10px;
+}
+
+.checkbox_option {
+  padding: 2px 4px;
+}
+
+.checkbox_option>*,
+.checkoss>* {
+  color: white;
+}
+
 #textarea_label {
   top: 30px;
 }
