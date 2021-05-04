@@ -70,10 +70,18 @@ select,
   padding: 10px 10px 5px 0px;
   width: 100%;
   font-size: 1.2rem;
-}
+} 
 
 #avatar-label {
   color: white;
+}
+
+.avatar {
+  height: 80px;
+  width: 80px;
+  border-radius: 100%;
+  background: transparent no-repeat center;
+  background-size: cover;
 }
 
 textarea {

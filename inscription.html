@@ -35,7 +35,7 @@
     </nav>
   </header>
 
-  <form action="./inscription.php" method="post">
+  <form action="./inscription.php" method="post" enctype="multipart/form-data">
     <h1>Ce n'est pas un formulaire, c'est une inscription,<br> je valide et je patiente</h1>
     <div class="form-container">
       <label for="prenom">Prénom</label>
@@ -62,8 +62,8 @@
       <input class="input" type="password" name="confmdp" id="confmdp">
     </div>
     <div class="form-container">
-      <label for="userfile" id="avatar-label">Avatar</label>
-      <input class="file" id="userfile" name="userfile" type="file" accept="image/png, image/jpeg">/>
+      <label for="fichier" id="avatar-label">Avatar</label>
+      <input class="file" id="fichier" name="fichier" type="file" accept="image/png, image/jpeg">
     </div>
     <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
     <input type="submit" value="Validation avec Inscription">

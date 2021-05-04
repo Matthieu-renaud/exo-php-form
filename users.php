@@ -42,6 +42,7 @@
         <th>Nom</th>
         <th>Pseudo</th>
         <th>Email</th>
+        <th>Avatar</th>
         <th class="modif">Modification</th>
       </tr>
     </thead>
@@ -51,16 +52,18 @@
 
       $req = new PDO('mysql:host=localhost;dbname=my_blog', 'root', '');
       
-      $stmt = $req->prepare("SELECT id, firstname, lastname, pseudo, email FROM users ORDER BY id");
+      $stmt = $req->prepare("SELECT id, firstname, lastname, pseudo, email, avatar FROM users ORDER BY id");
       $stmt->execute();
       
       $resultat = $stmt->fetchAll();
 
       for ($i=0; $i < count($resultat); $i++) { 
         echo "<tr>";
-        for ($j=0; $j < count($resultat[$i])/2; $j++) { 
+        for ($j=0; $j < count($resultat[$i])/2-1; $j++) { 
           echo "<td>{$resultat[$i][$j]}</td>";
         }
+        $avatar = (!$resultat[$i]['avatar']) ? 'vide' : $resultat[$i]['avatar'];
+        print_r("<td><div class=\"avatar\" style=\"background-image: url($avatar)\"></div></td>");
         print_r("<td class=\"modif\"><button id=\"modif{.$i}\"><a href=\"./edit.php?id={$resultat[$i][0]}\">Modifier</a></button></td>");
         echo "</tr>";
       }

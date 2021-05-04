@@ -93,47 +93,61 @@
     $confmdpLen = strlen($confmdp);
     $confmdpBool= false;
     if ($confmdp!=$mdp) {
-      echo "<h3 class=\"error\">Les mots de passe ne sont pas identiques";
+      echo "<h3 class=\"error\">Les mots de passe ne sont pas identiques</h3>";
     } else {
       $confmdpBool = true;
       echo "<h3 class=\"success\">Les mots de passe sont identiques</h3>";
     }
 
-    
-    $uploaddir = '/assets/img/dl';
-    if(!file_exists($uploaddir))    
-      mkdir($uploaddir);
-    $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
 
-    echo '<pre>';
-    if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
-        echo "Le fichier est valide, et a été téléchargé
-              avec succès. Voici plus d'informations :\n";
-    } else {
-        echo "Attaque potentielle par téléchargement de fichiers.
-              Voici plus d'informations :\n";
+    function string2url($chaine) { 
+      $chaine = trim($chaine); 
+      $chaine = strtr($chaine, 
+      "ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ", 
+      "aaaaaaaaaaaaooooooooooooeeeeeeeecciiiiiiiiuuuuuuuuynn"); 
+      $chaine = lcfirst(ucwords($chaine));
+      $chaine = preg_replace('#([^.a-z0-9]+)#i', '', $chaine); 
+              $chaine = preg_replace('#-{2,}#','',$chaine); 
+              $chaine = preg_replace('#-$#','',$chaine); 
+              $chaine = preg_replace('#^-#','',$chaine); 
+      return $chaine; 
     }
 
-    echo 'Voici quelques informations de débogage :';
-    print_r($_FILES);
+    $fileBool = 0;
+    $uploaddir = './assets/img/dl';
+    if(!file_exists($uploaddir))    
+      mkdir($uploaddir);
+    $uploadfile = $uploaddir . basename(string2url($_FILES['fichier']['name']));
 
-    echo '</pre>';
+    if (move_uploaded_file($_FILES['fichier']['tmp_name'], $uploadfile)) {
+      echo "<h3 class=\"success\">Le fichier avatar est valide</h3>";
+      $fileBool = 1;
+    } else if ($_FILES['fichier']['error']==4){
+      echo "<h3 class=\"success\">Aucun fichier avatar renseigné</h3>";
+      $fileBool = 1;
+    } else if ($_FILES['fichier']['error']==1){
+      echo "<h3 class=\"error\">Le fichier avatar est trop lourd</h3>";
+    } else {
+      echo "<h3 class=\"error\">Le fichier avatar n'a pas été téléchargé</h3>";
+    }
 
 
 
-    if($nomBool && $prenomBool && $pseudoBool && $emailBool && $mdpBool && $confmdpBool) {
+
+    if($nomBool && $prenomBool && $pseudoBool && $emailBool && $mdpBool && $confmdpBool && $fileBool) {
       echo "<h2 class=\"success\">Tous les champs sont valides</h2>";
       $mdpHash = password_hash($mdp, PASSWORD_DEFAULT);
       
       $req = new PDO('mysql:host=localhost;dbname=my_blog', 'root', '');
-      $sth = $req->prepare('INSERT INTO users (firstname, lastname, pseudo, mdp,  email) VALUES(:firstname, :lastname, :nickname, :pwd, :email)');
+      $sth = $req->prepare('INSERT INTO users (firstname, lastname, pseudo, mdp,  email, avatar) VALUES(:firstname, :lastname, :nickname, :pwd, :email, :avatar)');
       
       $sth->execute(array(
         'firstname' => strip_tags($prenom),
         'lastname' => strip_tags($nom),
         'nickname' => strip_tags($pseudo),
         'pwd' => strip_tags($mdpHash),
-        'email' => strip_tags($email)
+        'email' => strip_tags($email),
+        'avatar' => strip_tags($uploadfile)
       ));
       
     } else {
