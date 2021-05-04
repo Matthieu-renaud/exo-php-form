@@ -66,6 +66,16 @@ select,
   font-size: 1.2rem;
 }
 
+.file {
+  padding: 10px 10px 5px 0px;
+  width: 100%;
+  font-size: 1.2rem;
+}
+
+#avatar-label {
+  color: white;
+}
+
 textarea {
   font-family: 'Roboto', sans-serif;
   resize: none;

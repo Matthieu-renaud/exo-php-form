@@ -99,6 +99,28 @@
       echo "<h3 class=\"success\">Les mots de passe sont identiques</h3>";
     }
 
+    
+    $uploaddir = '/assets/img/dl';
+    if(!file_exists($uploaddir))    
+      mkdir($uploaddir);
+    $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
+
+    echo '<pre>';
+    if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
+        echo "Le fichier est valide, et a été téléchargé
+              avec succès. Voici plus d'informations :\n";
+    } else {
+        echo "Attaque potentielle par téléchargement de fichiers.
+              Voici plus d'informations :\n";
+    }
+
+    echo 'Voici quelques informations de débogage :';
+    print_r($_FILES);
+
+    echo '</pre>';
+
+
+
     if($nomBool && $prenomBool && $pseudoBool && $emailBool && $mdpBool && $confmdpBool) {
       echo "<h2 class=\"success\">Tous les champs sont valides</h2>";
       $mdpHash = password_hash($mdp, PASSWORD_DEFAULT);

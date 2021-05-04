@@ -33,7 +33,7 @@
     </nav>
   </header>
 
-  <form action="./validation_ajout_article.php" method="post">
+  <form action="./validation_ajout_article.php" method="post" enctype="multipart/form-data">
     <h1>Ce n'est pas un formulaire, c'est une création d'article,<br> je valide et je m'applique</h1>
     <div class="form-container">
       <label for="nom">Nom</label>
