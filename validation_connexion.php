@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Connexion</title>
+  <title>Validation Connexion</title>
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
@@ -38,20 +38,6 @@
       </ul>
     </div>
   </header>
-
-  <form action="./validation_connexion.php" method="post" enctype="multipart/form-data">
-    <h1>Ce n'est pas un formulaire, c'est une connexion,<br> je valide avec validation</h1>
-    <div class="form-container">
-      <label for="email">Email</label>
-      <input class="input" type="email" name="email" id="email">
-    </div>
-    <div class="form-container">
-      <label for="mdp">Mot de passe</label>
-      <input class="input" type="password" name="mdp" id="mdp">
-    </div>
-    <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
-    <input type="submit" value="Validation avec Connexion">
-  </form>
-
+  
 </body>
 </html>
