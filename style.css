@@ -7,13 +7,14 @@
 }
 
 body {
+  margin-top: 88px;
   font-family: 'Roboto', sans-serif;
   background-color: black;
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh
+  min-height: 80vh
 }
 
 ul {

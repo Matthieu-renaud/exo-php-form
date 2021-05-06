@@ -10,7 +10,8 @@
 </head>
 
 <body>
-  <header>
+  
+<header>
     <nav>
       <ul class="group_menus">
         <li class="menus"><a href="./index.php">Accueil</a></li>
@@ -34,8 +35,8 @@
     </nav>
     <div class="coco">
       <ul class="connect">
-        <li class="sous_menus btn_co"><a href="#">Connexion</a></li>
-        <li class="sous_menus btn_deco"><a href="#">Déconnexion</a></li>
+        <li class="sous_menus btn_co"><a href="./connexion.php">Connexion</a></li>
+        <li class="sous_menus btn_deco"><a href="./deconnexion.php">Déconnexion</a></li>
       </ul>
     </div>
   </header>
