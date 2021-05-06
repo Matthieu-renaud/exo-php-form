@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inscription</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Modification</title>
+  <link rel="stylesheet" href="./style.css">
 </head>
-
 <body>
-
-  <header>
+   
+<header>
     <nav>
       <ul class="group_menus">
         <li class="menus"><a href="./index.html">Accueil</a></li>
@@ -35,41 +33,42 @@
     </nav>
   </header>
 
-  <form action="./inscription.php" method="post" enctype="multipart/form-data">
-    <h1>Ce n'est pas un formulaire, c'est une inscription,<br> je valide et je patiente</h1>
+  <?php
+  
+  $id = htmlspecialchars($_GET['id']);
+
+  $req = new PDO('mysql:host=localhost;dbname=my_blog', 'root', '');
+        
+  $stmt = $req->prepare("SELECT firstname, lastname, pseudo, email FROM users WHERE id=:id");
+  $stmt->execute(array(
+    'id' => $id
+  ));
+
+  $resultat = $stmt->fetchAll();
+
+  ?>
+
+  <form action="./validation_edit_user.php" method="post">
+    <h1>Ce n'est pas un formulaire, c'est une modification,<br> je valide et je me sauve</h1>
     <div class="form-container">
       <label for="prenom">Prénom</label>
-      <input class="input" type="text" name="prenom" id="prenom">
+      <input class="input" type="text" name="prenom" id="prenom" value="<?php echo $resultat[0]['firstname'] ?>">
     </div>
     <div class="form-container">
       <label for="nom">Nom</label>
-      <input class="input" type="text" name="nom" id="nom">
+      <input class="input" type="text" name="nom" id="nom" value="<?php echo $resultat[0]['lastname'] ?>">
     </div>
     <div class="form-container">
       <label for="pseudo">Pseudo</label>
-      <input class="input" type="text" name="pseudo" id="pseudo">
+      <input class="input" type="text" name="pseudo" id="pseudo" value="<?php echo $resultat[0]['pseudo'] ?>">
     </div>
     <div class="form-container">
       <label for="email">Email</label>
-      <input class="input" type="email" name="email" id="email">
+      <input class="input" type="email" name="email" id="email" value="<?php echo $resultat[0]['email'] ?>">
     </div>
-    <div class="form-container">
-      <label for="mdp">Mot de passe</label>
-      <input class="input" type="password" name="mdp" id="mdp">
-    </div>
-    <div class="form-container">
-      <label for="confmdp">Confirmez votre mot de passe</label>
-      <input class="input" type="password" name="confmdp" id="confmdp">
-    </div>
-    <div class="form-container">
-      <label for="fichier" id="avatar-label">Avatar</label>
-      <input class="file" id="fichier" name="fichier" type="file" accept="image/png, image/jpeg">
-    </div>
-    <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
-    <input type="submit" value="Validation avec Inscription">
+    <input type="hidden" name="id" id="id" value="<?php echo $id ?>">
+    <input type="submit" value="Validation avec Modification">
   </form>
 
-
 </body>
-
 </html>

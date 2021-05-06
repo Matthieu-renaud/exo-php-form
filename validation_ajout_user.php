@@ -28,7 +28,7 @@
       </ul>
       <ul class="group_menus">
         <li class="menus"><a href="./users.php">Utilisateurs</a></li>
-        <li class="menus"><a href="./inscription.html">Inscription</a></li>
+        <li class="menus"><a href="./ajout_user.php">Inscription</a></li>
       </ul>
     </nav>
   </header>
@@ -156,7 +156,7 @@
 
     ?>
   </div>
-  <button><a href="./inscription.html">Retour au formulaire</a></button>
+  <button><a href="./ajout_user.php">Retour au formulaire</a></button>
 </main>
 
 

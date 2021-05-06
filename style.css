@@ -31,16 +31,38 @@ ul {
   background-color:#002c6d ;
 }
 
+.sous_menus:hover{
+  background-color: #055a6b;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
 nav {
   padding: 15px 0px;
-  width: 100%;
   display: flex;
   justify-content:space-between;
   align-items: center;
   background-color: #0d6efd;
-  position: fixed;
-  top: 0;
-  left: 0;
+}
+
+.connect {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.sous_menus {
+  display: inline;
+  font-size: 1.5rem;
+  padding: 10px 20px;
+  justify-content:space-between;
+  align-items: center;
+  background-color: #0dcaf0;
 }
 
 form {

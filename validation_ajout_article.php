@@ -104,22 +104,13 @@
       $nbr = $appel->fetchAll();
 
 
-      print_r($_POST['exemple16']);
-
-      // if(!empty($case)){
-      //   echo"Vous avez coché la case";}
-      //   else
-      //   {echo"Vous n'avez pas coché la case";
-      // }
+      print_r(!isset($_POST['exemple16']));
       
-      // for ($i=0; $i < $nbr[0][0]; $i++) { 
-      //   $idconcat = string2url($res[$i][2]);
-      //   if ($_POST[$idconcat]=='on')
-      //   echo 'cc';
-      // }
-
-      // $check = htmlspecialchars($_POST['contenu']);
-
+      for ($i=0; $i < $nbr[0][0]; $i++) { 
+        $idconcat = string2url($res[$i][2]);
+        if (isset($_POST[$idconcat]))
+        echo $idconcat;
+      }
 
     ?>
   </div>

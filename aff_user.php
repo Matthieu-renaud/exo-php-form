@@ -64,7 +64,7 @@
         }
         $avatar = (!$resultat[$i]['avatar']) ? 'vide' : $resultat[$i]['avatar'];
         print_r("<td><div class=\"avatar\" style=\"background-image: url($avatar)\"></div></td>");
-        print_r("<td class=\"modif\"><button id=\"modif{.$i}\"><a href=\"./edit.php?id={$resultat[$i][0]}\">Modifier</a></button></td>");
+        print_r("<td class=\"modif\"><button id=\"modif{.$i}\"><a href=\"./edit_user.php?id={$resultat[$i][0]}\">Modifier</a></button></td>");
         echo "</tr>";
       }
       
